@@ -69,9 +69,9 @@
 </template>
 
 <script>
+import { onButtonClicked } from '../session'
 import Catalogue from './Catalogue.vue'
 import Models from '../../objects.json'
-
 export default {  
   data() {
     return {
@@ -93,6 +93,7 @@ export default {
   },
 
   mounted(){
+    onButtonClicked();
     this.models = Models;
   }
 
