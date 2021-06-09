@@ -9,15 +9,32 @@
 </template>
 
 <script>
+import { checkXR } from '../session'
   export default {
     data() {
-      return{}
+      return{
+        isSessionSupported: false,
+      }
     },
 
     methods: {
       enterToScene() {
-        this.$router.push('/session');
-      }
+        if(this.isSessionSupported){
+          this.$router.push('/session');
+        }
+      },
+
+      async checkSessionSupported () {
+        try{
+          this.isSessionSupported = await checkXR();
+        }catch(e){
+          console.log(e);
+        }
+      },
+    },
+
+    mounted(){
+      this.checkSessionSupported();
     }
   }
 </script>
