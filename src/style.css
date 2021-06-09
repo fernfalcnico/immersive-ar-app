@@ -6,3 +6,181 @@ body, html {
   margin: 0;
   height: 100%;
 }
+
+canvas{
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+}
+
+#app {
+  background-color: white;
+}
+
+.home-menu{
+  position: absolute;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  top: 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-width: thin;
+  border-style: solid;
+  background-color: rgb(142,151,117);
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+  border-bottom-left-radius: 2.5rem;
+  border-bottom-right-radius: 2.5rem;
+}
+
+#landing-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #faf2da;
+  height: 100vh;
+}
+
+.basicButton{
+  position: relative;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  border-width: 1px;
+  border-color: transparent;
+  border-radius: 0.375rem;
+  color: white;
+  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  --tw-bg-opacity: 1;
+  background-color: rgb(142,151,117, var(--tw-bg-opacity));
+  outline: none;
+}
+
+.basicButton:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(74,81,61, var(--tw-bg-opacity));
+}
+
+.basicButton:focus{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+
+  box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+
+  --tw-ring-offset-width: 2px;
+  box-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color), var(--ring-shadow);
+
+  --tw-ring-color: rgba(99, 102, 241, var(--tw-ring-opacity));
+}
+
+
+/* Scene buttons to interacte with objects on the scene */
+
+.confirmActionButtonDiv{
+  width: 100%;
+  display: none;
+  justify-content: center;
+  position: absolute;
+  bottom: 4.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.confirmActionButton{
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1rem;
+  border-radius: 9999px;
+  background-color: rgb(142,151,117);
+
+}
+
+.cancelActionButtonDiv{
+  height: 3rem;
+  display: none;
+  align-items: center;
+  margin-left: 7rem;
+  position: absolute;
+  bottom: 4.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cancelActionButton{
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1rem;
+  border-radius: 9999px;
+  background-color: rgb(250,242,218)
+}
+
+#targetDotDiv{
+  display: none;
+  position: absolute;
+  bottom: 47%;
+  left: 50%;
+}
+
+.targetDot{
+  font-size: 3rem;
+  color: white;
+}
+
+#rotateLeftButtonDiv, #rotateRightButtonDiv{
+  display: none;
+  height: 3rem;
+  position: absolute;
+  bottom: 50%;
+}
+
+#rotateLeftButtonDiv{
+  margin-left: 1rem;
+}
+
+#rotateRightButtonDiv{
+  right: 0;
+  margin-right: 1rem;
+}
+
+.rotateActionButton{
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1rem;
+  border-radius: 9999px;
+  background-color: rgb(250,242,218)
+}
+
+/* --------------------------------------------- */
+
+
+/* Spinner */
+
+@keyframes loader-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loader {
+  border-right-color: transparent;
+  animation: loader-rotate 1s linear infinite;
+}
+
+/* --------------------------------------------- */
