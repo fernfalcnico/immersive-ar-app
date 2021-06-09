@@ -4,7 +4,7 @@
         <div class="h-40">
           <img class="object-cover shadow-lg rounded-t-lg" :src="'/assets/models/' + model.image" :alt="model.name + 'image'">
         </div>
-        <div @click.stop="prepareModelToDrop" class="flex justify-between pt-6 pb-4 px-2">
+        <div @click.stop="prepareModelToDrop" class="flex justify-between pt-12 pb-4 px-2">
           <h3 class="text-sm md:text-lg font-medium text-gray-900">{{model.name}}</h3>
           <img src="/assets/icons/arkit.svg" alt="ARkit logo">
         </div>
