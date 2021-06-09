@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div id="landing-div">
-      <p class="text-red-800 text-center">Immersive-ar</p>
-      <button id="xr-button">AR not found</button>
+    <div @click="enterToScene" id="landing-div">
+      <p class="text-center">Immersive-AR Web App</p>
+      <button id="xr-button" class="basicButton">AR not found</button>
     </div>
   </div>
   
@@ -14,8 +14,10 @@
       return{}
     },
 
-    mounted() {
-      console.log("Testing");
+    methods: {
+      enterToScene() {
+        this.$router.push('/session');
+      }
     }
   }
 </script>
