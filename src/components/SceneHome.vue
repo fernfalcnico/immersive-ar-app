@@ -107,7 +107,12 @@ export default {
       //Do anything you need after a model is added to the scene
       //data.id have the id of the model that was to the scene. 
     })
+    window.eventBus.$on('modelDeletedFromScene', (data) => {
+      //Do anything you need after a model is deleted from the scene
+      //data.id have the id of the model that was deleted. 
+    })
   },
+
 
   beforeRouteEnter(to, from, next) {
     if(from.name === null) {
