@@ -84,24 +84,36 @@ export default {
 
   methods: {
     openCatalogue() {
+      this.notifySessionCatalogueIsOpen(true);
       this.showCatalogue = true;
     },
 
     closeCatalogue() {
+      this.notifySessionCatalogueIsOpen(false);
       this.showCatalogue = false;
-    }
+    },
+
+    notifySessionCatalogueIsOpen(boolean){
+      window.eventBus.$emit('catalogueModify', boolean);
+    },
+
   },
 
   mounted(){
     onButtonClicked();
     this.models = Models;
-  }
 
-  // beforeRouteEnter(to, from, next) {
-  //   if(from.name === null) {
-  //     return next({name:'Home'});
-  //   }
-  //   return next();
-  // }
+    window.eventBus.$on('modelAddedToScene', (data) => {
+      //Do anything you need after a model is added to the scene
+      //data.id have the id of the model that was to the scene. 
+    })
+  },
+
+  beforeRouteEnter(to, from, next) {
+    if(from.name === null) {
+     return next({name:'Home'});
+    }
+    return next();
+  }
 }
 </script>

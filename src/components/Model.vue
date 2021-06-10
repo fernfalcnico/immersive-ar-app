@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { loadModel } from '../loader.js';
   export default {
     data(){
       return{}

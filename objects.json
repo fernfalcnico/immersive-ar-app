@@ -2,35 +2,35 @@
   {
     "id": 1,
     "name": "Doberman",
-    "scale": 0.01,
+    "scale": 0.2,
     "image": "doberman/doberman.png",
     "model": "/assets/models/doberman/doberman.glb"
   },
   {
     "id": 2,
     "name": "Cat",
-    "scale": 0.01,
+    "scale": 0.005,
     "image": "cat/cat.png",
-    "model": "/assets/models/doberman/cat.glb"
+    "model": "/assets/models/cat/cat.glb"
   },
   {
     "id": 3,
     "name": "Fox",
-    "scale": 0.01,
+    "scale": 0.03,
     "image": "fox/fox.png",
     "model": "/assets/models/fox/fox.glb"
   },
   {
     "id": 4,
     "name": "Bird",
-    "scale": 0.01,
+    "scale": 0.3,
     "image": "bird/bird.png",
     "model": "/assets/models/bird/bird.glb"
   },
   {
     "id": 5,
     "name": "Dinosaur",
-    "scale": 0.01,
+    "scale": 0.005,
     "image": "dinosaur/dinosaur.png",
     "model": "/assets/models/dinosaur/dinosaur.glb"
   }

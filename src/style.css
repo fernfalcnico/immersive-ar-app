@@ -29,10 +29,16 @@ canvas{
   border-width: thin;
   border-style: solid;
   background-color: rgb(142,151,117);
-  border-top-left-radius: 2.5rem;
-  border-top-right-radius: 2.5rem;
   border-bottom-left-radius: 2.5rem;
   border-bottom-right-radius: 2.5rem;
+}
+
+.catalogue{
+  min-height: 100vh;
+  height: 100%;
+  bottom: 2rem;
+  width: 100%;
+  background-color: white;
 }
 
 #landing-div{
