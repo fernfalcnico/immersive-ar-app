@@ -1,11 +1,16 @@
 import * as THREE from 'three';
+import { renewModel } from './loader.js';
 
 export let renderer = null;
 export let scene = null;
 export let camera = null;
-export let productObject = null;
+export let modelLoaded = null;
 export let reticle = null;
+let modelsInScene = [];
 
+export function setModelLoaded(model) {
+  modelLoaded = model;
+}
 
 export const initScene = (gl, session) => {
   scene = new THREE.Scene();
@@ -35,6 +40,12 @@ export const initScene = (gl, session) => {
   renderer.xr.setReferenceSpaceType('local');
   renderer.xr.setSession(session);
 
+  let checkButton = document.getElementById('checkButton');
+  let cancelPlaceModelButton = document.getElementById('cancelPlaceModelButton');
+
+  checkButton.addEventListener('click', placeObject);
+  cancelPlaceModelButton.addEventListener('click', stopPlacingModel);
+
   let appDiv = document.getElementById('app');
   appDiv.style.overflow = 'scroll'
   
@@ -54,3 +65,17 @@ export const initScene = (gl, session) => {
   reticle.visible = false;
   scene.add(reticle);
 };
+
+function placeObject() {
+  if (reticle.visible && modelLoaded) {
+  modelLoaded.applyMatrix4(reticle.matrix);
+  scene.add(modelLoaded);
+  modelsInScene.push(modelLoaded);
+  window.eventBus.$emit('modelAddedToScene', {id: modelLoaded.userData.productId});
+  renewModel(modelLoaded.userData.productId, modelLoaded.userData.modelFile, modelLoaded.scale.x);
+  }
+}
+
+function stopPlacingModel() {
+  modelLoaded = null;
+}
