@@ -4,6 +4,7 @@ import {
   reticle,
   renderer,
   initScene,
+  modelLoaded,
 } from './scene.js'
 
 let xrButton = null
@@ -12,6 +13,7 @@ let xrSession = null
 let xrRefSpace = null
 let xrHitTestSource = null
 let gl = null
+let isCatalogueOpen = false;
 
 export async function checkXR() {
   xrButton = document.getElementById('xr-button')
@@ -50,6 +52,10 @@ export function onButtonClicked() {
 function onSessionStarted(session) {
   xrSession = session 
   session.addEventListener('end', onSessionEnded)
+
+  window.eventBus.$on('catalogueModify', (data) => {
+    isCatalogueOpen = data;
+  })
 
   // create a canvas element and WebGL context for rendering
   let canvas = document.createElement('canvas');
@@ -91,11 +97,19 @@ function onXRFrame(t, frame) {
   let session = frame.session
   session.requestAnimationFrame(onXRFrame)
 
-  if (xrHitTestSource) {
+  if(!isCatalogueOpen && reticle.visible && modelLoaded != null){
+    showPlaceObjectDiv();
+  }
+
+  if(isCatalogueOpen || modelLoaded == null) {
+    hidePlaceObjectDiv();
+  }
+
+  if (xrHitTestSource && modelLoaded != null) {
     // obtain hit test results by casting a ray from the center of device screen
     // into AR view. Results indicate that ray intersected with one or more detected surfaces
     const hitTestResults = frame.getHitTestResults(xrHitTestSource)
-    if (hitTestResults.length) {
+    if (hitTestResults.length && modelLoaded != null) {
       // obtain a local pose at the intersection point
       const pose = hitTestResults[0].getPose(xrRefSpace)
       // place a reticle at the intersection point
@@ -109,6 +123,16 @@ function onXRFrame(t, frame) {
   // bind our gl context that was created with WebXR to threejs renderer
   gl.bindFramebuffer(gl.FRAMEBUFFER, session.renderState.baseLayer.framebuffer)
   renderer.render(scene, camera)
+}
+
+function showPlaceObjectDiv() {
+  document.getElementById('checkButtonDiv').style.display = 'flex';
+  document.getElementById('cancelPlaceModelButtonDiv').style.display = 'flex';
+}
+
+function hidePlaceObjectDiv() {
+  document.getElementById('checkButtonDiv').style.display = 'none';
+  document.getElementById('cancelPlaceModelButtonDiv').style.display = 'none';
 }
 
 export default {
