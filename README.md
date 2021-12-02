@@ -15,5 +15,5 @@ The app's purpose is to create an immersive-ar session using WebXR, Three.js and
 
 #### Blog
 Here's my blog post for detail explaination on how to build an Immersive-ar web based app using WebXR Device API:
-
+https://lightit.io/blog/immersive-ar-web-application/
 
